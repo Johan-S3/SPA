@@ -1,5 +1,6 @@
 import './style.css';
 import { controllerCategoria } from './Views/Categories/controllerCategories';
+import { controllerFormulario } from './Views/Categories/controllerFormualrio';
 import { controllerProducto } from './Views/Products/controllerProducts';
 
 
@@ -29,11 +30,11 @@ async function cargarVista(ruta) {
   main.innerHTML = html;
 }
 
-function recorrer(hash) {
+async function recorrer(hash) {
   const objeto = rutas.find(objeto => objeto.nombre == hash);
   if (objeto) {
     const path = objeto.path;
-    cargarVista(path);
+    await cargarVista(path);
     objeto.controlador();
     return
   }
@@ -52,5 +53,10 @@ const rutas = [
     nombre: "Products",
     path: "src/Views/Products/index.html",
     controlador: controllerProducto
+  },
+  {
+    nombre: "FormularioCategoria",
+    path: "src/Views/Categories/formulario.html",
+    controlador: controllerFormulario
   }
 ]

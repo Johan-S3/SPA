@@ -80,3 +80,121 @@ body{
 .container{
   height: calc(100vh - 80px);
 }
+
+.main{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para el index.html de categories */
+.main__header{
+  margin-top: 10vh;
+  min-width: 50vW;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-self: center;
+  padding-bottom: 40px;
+}
+
+.main__button, .form__button{
+  height: max-content;
+  padding: 10px 20px;
+  background-color: #73462D;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 25px;
+  border: none;
+  transition: 0.25s;
+}
+
+.main__button{
+  filter: drop-shadow(0px 4px 2px black);
+}
+.main__table{
+  min-width: 50vw;
+  /* margin: 0 auto; */
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0px 2px 10px var(--input);
+  background-color: #FAEDDD;
+}
+.table__encabezado{
+  background-color: #DF6303;
+}
+.table__tupla:hover{
+  background-color: #b5b5b5;
+  transition: 0.25s;
+}
+
+.table__encabezado, .table__tupla{
+  height: 45px;
+}
+
+.table__celda{
+  padding: 0 15px;
+  /* border: 1px solid #555; */
+}
+
+
+/* Estilos del archivo formaulario.html que es el formualrio de registro de categoria */
+.main__form{
+  margin-top: 10vh;
+  width: 400px;
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  background-color: #FAEDDD;
+  border-radius: 25px;
+  filter: drop-shadow(0px 0px 10px #b5b5b5);
+}
+
+.form__title{
+  color: #73462D;
+}
+
+.form__space{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #b5b5b5;
+  outline: none;
+  height: 25px;
+  transition: ease-in 0.25s;
+}
+
+.form__input:focus{
+  border-color: #73462D;
+}
+
+.form__label{
+  font-weight: 500;
+}
+
+.form__mensaje{
+  color: #DF6303;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.form__button{
+  background-color: #DF6303;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.form__button:hover{
+  filter: drop-shadow(0px 0px 2.5px #73462D);
+}
