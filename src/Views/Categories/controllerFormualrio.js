@@ -1,6 +1,6 @@
+import { create } from "../../Helpers/peticiones";
 import { limitar, outFocus, validarFormulario, validarLetras } from "../../Helpers/validacionForm";
-import Swal from 'sweetalert2';
-
+import { successWindow, errorWindow } from "../../Helpers/ventanas";
 export const controllerFormulario = () => {
 
   const nombre = document.querySelector('[name="nombre"]');
@@ -19,33 +19,23 @@ export const controllerFormulario = () => {
   formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    validarFormulario(e);
+    if (!validarFormulario(e)) return;
 
-    const solicitud = await fetch('http://localhost:3000/api/categorias', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nombre: nombre.value,
-        descripcion: descripcion.value
-      })
-})
-    const datos = await solicitud.json();
+    const data = {
+      nombre: nombre.value,
+      descripcion: descripcion.value
+    };
+
+    const crearCategoria = await create("categorias", data)
+    const datos = await crearCategoria.json();
     console.log(datos);
     
     if (datos.success) {
-      Swal.fire({
-        title: 'Categoria Creada exitosamente',
-        icon: 'success',
-        // backdrop: false,         
-        // allowOutsideClick: false,
-        customClass: {
-          confirmButton: 'button__ok'
-        },
-      }).then(() => {
+      successWindow('Categoria Creada exitosamente').then(() => {
         window.location.hash = "Categories";
       });
+    } else {
+      errorWindow('No se puede crear la categoria', datos.erros);
     }
   })
 };

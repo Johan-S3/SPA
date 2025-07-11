@@ -23,8 +23,12 @@ export const controllerCategoria = async () => {
   const descripcion = document.createElement("th");
   descripcion.classList.add("table__celda");
   descripcion.textContent = "descripcion";
+  const accionEdit = document.createElement("th");
+  accionEdit.classList.add("table__celda");
+  const accionDelete = document.createElement("th");
+  accionDelete.classList.add("table__celda");
 
-  filaEncabezado.append(id, nombre, descripcion);
+  filaEncabezado.append(id, nombre, descripcion, accionEdit, accionDelete);
   encabezado.append(filaEncabezado);
 
   // Agregado de encabezado en la tabla
@@ -47,11 +51,26 @@ export const controllerCategoria = async () => {
     dataNombre.classList.add("table__celda");
     dataNombre.textContent = categoria.nombre;
     const dataDescipcion = document.createElement("td");
-    dataDescipcion.classList.add("table__celda");
+    dataDescipcion.classList.add("table__celda", "table__celda--descripcion");
     dataDescipcion.textContent = categoria.descripcion;
+    const accionEdit = document.createElement("td");
+    accionEdit.classList.add("table__celda");
+    const btnEditar = document.createElement("button");
+    btnEditar.classList.add("table__button");
+    btnEditar.setAttribute("data-id", categoria.id);
+    btnEditar.textContent = "Editar";
+    const accionDelete = document.createElement("td");
+    accionDelete.classList.add("table__celda");
+    const btnEliminar = document.createElement("button");
+    btnEliminar.classList.add("table__button", "table__button--delete");
+    btnEliminar.setAttribute("data-id", categoria.id);
+    btnEliminar.textContent = "Eliminar";
 
+    // Agrego los botones a la celda de acciones
+    accionEdit.append(btnEditar);
+    accionDelete.append(btnEliminar);
     // Agrego la información obtenida a la fila
-    filaCategoria.append(dataId, dataNombre, dataDescipcion);
+    filaCategoria.append(dataId, dataNombre, dataDescipcion, accionEdit, accionDelete);
 
     // Agrego la fila al cuerpo de la tabla
     cuerpo.append(filaCategoria);

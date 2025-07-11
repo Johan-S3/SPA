@@ -4,6 +4,8 @@ import { controllerFormulario } from './Views/Categories/controllerFormualrio';
 import { controllerProducto } from './Views/Products/controllerProducts';
 
 
+
+
 const main = document.querySelector(".main");
 
 window.addEventListener('hashchange', function() {
@@ -44,6 +46,11 @@ async function recorrer(hash) {
 
 
 const rutas = [
+  {
+    nombre: "Home",
+    path: "src/Views/Home/index.html",
+    // controlador: controllerCategoria
+  },
   {
     nombre: "Categories",
     path: "src/Views/Categories/index.html",

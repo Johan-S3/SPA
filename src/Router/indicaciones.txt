@@ -1,0 +1,3 @@
+Debo crear un archivo router.js y crear una funcion dentro de ella que viene siendo recorrer y por ende cargar vista.
+
+Luego creo otro archivo en el cual voy a tener el arreglo de objeto de rutas que exporto y importo en el router.js
