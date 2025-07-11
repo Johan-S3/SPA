@@ -50,12 +50,13 @@ export const validarFormulario = (e) => {
       case "INPUT":
         if (["text", "number", "tel", "password"].includes(campo.type)) {
           if (!campo.value) {
+            console.log(campo.parentNode);
             if (campo.nextElementSibling) campo.nextElementSibling.remove();
             campo.classList.add("form__input");
             let mensaje = document.createElement("span");
             mensaje.classList.add("form__mensaje");
             mensaje.textContent = `El campo "${nameCampo}" es obligatorio.`;
-            campo.insertAdjacentElement("afterend", mensaje);
+            campo.parentNode.appendChild(mensaje);
             isValid = false;
           }
         }
