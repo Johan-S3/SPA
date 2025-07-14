@@ -1,5 +1,7 @@
+import { get } from "../../Helpers/peticiones";
+
 export const controllerCategoria = async () => {
-  const solicitud = await fetch("http://localhost:3000/api/categorias");
+  const solicitud = await get("categorias");
   const datos = await solicitud.json();
   const categorias = await datos.data;
 
