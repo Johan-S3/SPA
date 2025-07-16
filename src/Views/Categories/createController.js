@@ -1,9 +1,8 @@
 import { create } from "../../Helpers/peticiones";
 import { limitar, outFocus, validarFormulario, validarLetras } from "../../Helpers/validacionForm";
 import { successWindow, errorWindow } from "../../Helpers/ventanas";
-export const controllerFormulario = () => {
-
-  const nombre = document.querySelector('[name="nombre"]');
+export const createController = () => {  
+  const nombre = document.querySelector('[name="nombre"]');  
   const descripcion = document.querySelector('[name="descripcion"]');
 
   // Validamos las letras permitidas en el campo de nombre

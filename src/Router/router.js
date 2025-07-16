@@ -1,23 +1,47 @@
 import { rutas } from "./routers";
 
-export async function recorrer(hash, main) {
-  const objeto = rutas.find(objeto => objeto.nombre == hash);
-  if (objeto) {
-    const path = objeto.path;
-    await cargarVista(path, main);
-    objeto.controlador();
-    return
-  }
-  cargarVista(null, main);
+export const router = async (hash, elemento) => {
+    const ruta = recorrerRutas(rutas, hash);
+    await cargarVista(ruta.path, elemento)  
+    ruta.controller();
+    console.log(ruta)
 }
 
-export async function cargarVista(ruta, main) {
-  if (!ruta) {
-    const mensaje = "<h1>404</h1><h1>\nPage not found</h1>"
-    main.innerHTML = mensaje;
-    return;
-  }
-  const vista = await fetch(ruta);
-  const html = await vista.text();
-  main.innerHTML = html;
+const recorrerRutas = (rutas, hash) => {
+    const arrayHas = hash.split("/");      
+    for (const key in rutas) {
+        // console.log(rutas[key]);
+                
+        if (key == arrayHas[0] || key == arrayHas[1] ) { 
+            for(const elemento in rutas[key]){
+                
+                if(typeof rutas[key][elemento] == "object"){
+                    console.log(arrayHas[arrayHas.length - 1]);
+                    
+                    console.log(elemento);
+                    if(arrayHas.length == 1){
+                        return rutas[key][elemento]
+                    }
+
+                    if(arrayHas[arrayHas.length - 1] == elemento){
+                        return rutas[key][elemento]
+                    }
+
+                }else{
+                    return  rutas[key]
+                }
+            }
+            
+            return rutas[key];            
+        }
+    }
+    return "";
+    
 }
+ const cargarVista = async (path, elemento) => {
+    console.log(path, elemento);
+    const seccion = await fetch(`./src/Views/${path}`);
+    if (!seccion.ok) throw new Error("No pudimos leer el archivo");
+    const html = await seccion.text();
+    elemento.innerHTML =  html;
+ }

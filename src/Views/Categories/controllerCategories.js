@@ -1,6 +1,6 @@
 import { get } from "../../Helpers/peticiones";
 
-export const controllerCategoria = async () => {
+export const categoriaController = async () => {
   const solicitud = await get("categorias");
   const datos = await solicitud.json();
   const categorias = await datos.data;
