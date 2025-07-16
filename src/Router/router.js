@@ -1,10 +1,10 @@
 import { rutas } from "./routers";
 
 export const router = async (hash, elemento) => {
-    const ruta = recorrerRutas(rutas, hash);
-    await cargarVista(ruta.path, elemento)  
-    ruta.controller();
-    console.log(ruta)
+  const ruta = recorrerRutas(rutas, hash);  
+  console.log(ruta)
+  await cargarVista(ruta.path, elemento)  
+  ruta.controller();
 }
 
 const recorrerRutas = (rutas, hash) => {
@@ -17,9 +17,8 @@ const recorrerRutas = (rutas, hash) => {
                 
                 if(typeof rutas[key][elemento] == "object"){
                     console.log(arrayHas[arrayHas.length - 1]);
-                    
                     console.log(elemento);
-                    if(arrayHas.length == 1){
+                    if(arrayHas.length == 1 || arrayHas[arrayHas.length - 1] == ""){
                         return rutas[key][elemento]
                     }
 
@@ -31,17 +30,19 @@ const recorrerRutas = (rutas, hash) => {
                     return  rutas[key]
                 }
             }
-            
-            return rutas[key];            
+            return rutas[key];
         }
     }
-    return "";
+    return null;
     
 }
  const cargarVista = async (path, elemento) => {
     console.log(path, elemento);
     const seccion = await fetch(`./src/Views/${path}`);
-    if (!seccion.ok) throw new Error("No pudimos leer el archivo");
+   if (!seccion.ok) {
+     console.log("No existe");
+     throw new Error("No pudimos leer el archivo");
+  } 
     const html = await seccion.text();
     elemento.innerHTML =  html;
  }
