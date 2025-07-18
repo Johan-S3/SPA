@@ -1,7 +1,7 @@
-import { create } from "../../Helpers/peticiones";
-import { limitar, outFocus, validarFormulario, validarLetras } from "../../Helpers/validacionForm";
-import { successWindow, errorWindow } from "../../Helpers/ventanas";
-export const createController = () => {  
+import { create } from "../../../Helpers/peticiones";
+import { limitar, outFocus, validarFormulario, validarLetras } from "../../../Helpers/validacionForm";
+import { successWindow, errorWindow } from "../../../Helpers/ventanas";
+export const createController = (parametros = null) => {  
   const nombre = document.querySelector('[name="nombre"]');  
   const descripcion = document.querySelector('[name="descripcion"]');
 

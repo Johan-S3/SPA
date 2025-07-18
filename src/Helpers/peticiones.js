@@ -16,3 +16,25 @@ export const create = async (path, data) => {
 
   return solicitud;
 }
+
+export const update = async (path, data) => {
+  const solicitud = await fetch(`${ruta}${path}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });  
+  return solicitud;
+}
+
+export const del = async (path) => {
+  const solicitud = await fetch(`${ruta}${path}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });  
+  return solicitud;
+}
+
