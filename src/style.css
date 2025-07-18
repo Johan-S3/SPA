@@ -166,6 +166,8 @@ body{
   border: 2px solid #DF6303;
   cursor: pointer;
   transition: 0.25s;
+  text-decoration: none;
+  color: black;
 }
 
 .table__button:hover{

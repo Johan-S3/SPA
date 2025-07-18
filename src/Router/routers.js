@@ -1,5 +1,5 @@
 import { categoriaController } from '../Views/categories/controllerCategories';
-import { createController } from '../Views/categories/create/createController';
+import { createController } from '../Views/Categories/create/createController';
 import { homeController } from '../Views/home/homeController';
 import { loginController } from '../Views/login/loginController';
 import { productController } from '../Views/products/productController';

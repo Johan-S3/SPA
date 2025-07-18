@@ -30,9 +30,8 @@ export const createController = (parametros = null) => {
     console.log(datos);
     
     if (datos.success) {
-      successWindow('Categoria Creada exitosamente').then(() => {
-        window.location.hash = "Categories";
-      });
+      const alerta = await successWindow('Categoria Creada exitosamente');
+      if(alerta.isConfirmed) window.location.href = "#/categories";
     } else {
       errorWindow('No se puede crear la categoria', datos.erros);
     }
